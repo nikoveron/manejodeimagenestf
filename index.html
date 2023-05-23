@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplo de Canvas</title>
+</head>
+<body>
+	<!-- Creamos un canvas con un id "miCanvas" y las dimensiones que queramos -->
+	<canvas id="miCanvas" width="1890px" height="940px"></canvas>
+
+	<script>
+		// Obtenemos el canvas y su contexto de dibujo
+		var canvas = document.getElementById("miCanvas");
+		var contexto = canvas.getContext("2d");
+
+		//funcion para generar RGB aleatorio
+		function generarRGBaleatorio(){
+			var r = Math.floor(Math.random() *256);
+			var g = Math.floor(Math.random() *256);
+			var b = Math.floor(Math.random() *256);
+			return "rgb(" + r + "," + g + "," + b + ")";
+		}
+
+		// Dibujamos un cuadrado relleno de color rojo en la posición x=50, y=50, con ancho 100px y alto 100px lado izquierdo
+		/* contexto.fillStyle = "red";
+		contexto.fillRect(25, 6, 100, 100);
+ */
+		for (var x = 10; x <120; x++) {
+			for (var y = 5; y <100; y++) {
+				contexto.fillStyle = generarRGBaleatorio();
+				contexto.fillRect(x,y,1,1);
+			}
+		}
+		
+		//lado derecho
+		contexto.fillStyle = "red";
+		contexto.fillRect(1765, 839, 100, 100);
+
+
+		// Dibujamos un círculo relleno de color azul con centro en x=250, y=150 y radio de 50px lado derecho
+		contexto.beginPath();
+		contexto.arc(1815, 55, 50, 0, 2 * Math.PI);
+		contexto.fillStyle = "blue";
+		contexto.fill();
+
+		//lado izquierdo
+		contexto.beginPath();
+		contexto.arc(76, 890, 50, 0, 2 * Math.PI);
+		contexto.fillStyle = "blue";
+		contexto.fill();
+
+		// Dibujamos una línea horizontal de color verde desde x=50, y=200 hasta x=350, y=200
+		contexto.beginPath();
+		contexto.moveTo(0, 5);
+		contexto.lineTo(1880, 5);
+		contexto.strokeStyle = "pink";
+		contexto.stroke();
+
+		contexto.beginPath();
+		contexto.moveTo(-1, 940);
+		contexto.lineTo(1895, 940);
+		contexto.strokeStyle = "brown";
+		contexto.stroke();
+
+		// Dibujamos una línea vertical de color púrpura desde x=200, y=50 hasta x=200, y=350
+		contexto.beginPath();
+		contexto.moveTo(1890, 4);
+		contexto.lineTo(1890, 999);
+		contexto.strokeStyle = "purple";
+		contexto.lineWidth = 50;
+		contexto.stroke();
+
+		contexto.beginPath();
+		contexto.moveTo(0, 4);
+		contexto.lineTo(0, 999);
+		contexto.strokeStyle = "orange";
+		contexto.stroke();
+	</script>
+</body>
+</html>
